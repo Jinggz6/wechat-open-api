@@ -12,9 +12,5 @@
             "email": "jinggz6@163.com"
         }
     ],
-    "autoload"         : {
-        "psr-4": {
-            "Jinggz\\": "OpenPlatform/"
-        }
-    }
+    "minimum-stability": "dev"
 }
