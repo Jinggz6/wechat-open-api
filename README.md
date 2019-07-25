@@ -3,7 +3,7 @@
 
 #### composer下载
 
-`composer requ`
+`composer require jinggz/wechat-open-api`
 
 #### 微信官方文档：
 
