@@ -1,0 +1,21 @@
+{
+    "name"       : "jinggz/wechat-open-api",
+    "description": "This is WeChat open platform",
+    "type"       : "library",
+    "require"    : {
+        "php": ">=5.4.0"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name" : "Jinggz",
+            "email": "jinggz6@163.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload"         : {
+        "psr-4": {
+            "Jinggz\\": "OpenPlatform/"
+        }
+    }
+}
