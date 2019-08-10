@@ -77,9 +77,6 @@ class AppletOpenApi
         }
         $json_arr = json_encode($data,JSON_UNESCAPED_UNICODE); //第二个参数解决中文问题
         $json_data = $this->curlPostHttps($url, $json_arr);
-        if (empty($json_data)) {
-            return WechatErrorCode::$setAppletUrlError;
-        }
         $arr = json_decode($json_data, true);
         if (!isset($arr['errcode'])) {
             return WechatErrorCode::$setAppletUrlError;
@@ -123,9 +120,6 @@ class AppletOpenApi
         }
         $json_arr = json_encode($data,JSON_UNESCAPED_UNICODE);
         $json_data = $this->curlPostHttps($url, $json_arr);
-        if (empty($json_data)) {
-            return WechatErrorCode::$setVoipDomainNameError;
-        }
         $arr = json_decode($json_data, true);
         if (!isset($arr['errcode'])) {
             return WechatErrorCode::$setVoipDomainNameError;
@@ -157,9 +151,6 @@ class AppletOpenApi
         );
         $json_arr = json_encode($data,JSON_UNESCAPED_UNICODE);
         $json_data = $this->curlPostHttps($url, $json_arr);
-        if (empty($json_data)) {
-            return WechatErrorCode::$applyPlugInUseError;
-        }
         $arr = json_decode($json_data, true);
         if (!isset($arr['errcode'])) {
             return WechatErrorCode::$applyPlugInUseError;
@@ -190,9 +181,6 @@ class AppletOpenApi
         );
         $json_arr = json_encode($data,JSON_UNESCAPED_UNICODE);
         $json_data = $this->curlPostHttps($url, $json_arr);
-        if (empty($json_data)) {
-            return WechatErrorCode::$selectPlugInError;
-        }
         $arr = json_decode($json_data, true);
         if (!isset($arr['errcode'])) {
             return WechatErrorCode::$selectPlugInError;
@@ -225,9 +213,6 @@ class AppletOpenApi
         );
         $json_arr = json_encode($data,JSON_UNESCAPED_UNICODE);
         $json_data = $this->curlPostHttps($url, $json_arr);
-        if (empty($json_data)) {
-            return WechatErrorCode::$delAddPlugInError;
-        }
         $arr = json_decode($json_data, true);
         if (!isset($arr['errcode'])) {
             return WechatErrorCode::$delAddPlugInError;
@@ -263,9 +248,6 @@ class AppletOpenApi
         );
         $json_arr = json_encode($data,JSON_UNESCAPED_UNICODE);
         $json_data = $this->curlPostHttps($url, $json_arr);
-        if (empty($json_data)) {
-            return WechatErrorCode::$updatePlugInError;
-        }
         $arr = json_decode($json_data, true);
         if (!isset($arr['errcode'])) {
             return WechatErrorCode::$updatePlugInError;
@@ -301,9 +283,6 @@ class AppletOpenApi
         );
         $json_arr = json_encode($data,JSON_UNESCAPED_UNICODE);
         $json_data = $this->curlPostHttps($url, $json_arr);
-        if (empty($json_data)) {
-            return WechatErrorCode::$appletUploadError;
-        }
         $arr = json_decode($json_data, true);
         if (!isset($arr['errcode'])) {
             return WechatErrorCode::$appletUploadError;
@@ -337,9 +316,6 @@ class AppletOpenApi
             $url = 'https://api.weixin.qq.com/wxa/get_qrcode?access_token=' . $access_token . '&path=' . $path;
         }
         $json_data = $this->curlGetHttps($url);
-        if (empty($json_data)) {
-            return WechatErrorCode::$getQrcodeError;
-        }
         return $json_data;
     }
 
@@ -358,9 +334,6 @@ class AppletOpenApi
     {
         $url = 'https://api.weixin.qq.com/wxa/get_category?access_token=' . $access_token;
         $json_data = $this->curlGetHttps($url);
-        if (empty($json_data)) {
-            return WechatErrorCode::$getAppletClassError;
-        }
         $arr = json_decode($json_data, true);
         if (!isset($arr['errcode'])) {
             return WechatErrorCode::$getAppletClassError;
@@ -386,9 +359,6 @@ class AppletOpenApi
     {
         $url = 'https://api.weixin.qq.com/wxa/get_page?access_token=' . $access_token;
         $json_data = $this->curlGetHttps($url);
-        if (empty($json_data)) {
-            return WechatErrorCode::$getPageConfigError;
-        }
         $arr = json_decode($json_data, true);
         if (!isset($arr['errcode'])) {
             return WechatErrorCode::$getPageConfigError;
@@ -424,9 +394,6 @@ class AppletOpenApi
         );
         $data_json = json_encode($data,JSON_UNESCAPED_UNICODE);
         $json_data = $this->curlPostHttps($url, $data_json);
-        if (empty($json_data)) {
-            return WechatErrorCode::$submitAppletError;
-        }
         $arr = json_decode($json_data, true);
         if (!isset($arr['errcode'])) {
             return WechatErrorCode::$submitAppletError;
@@ -456,9 +423,6 @@ class AppletOpenApi
         );
         $arr_json = json_encode($arr,JSON_UNESCAPED_UNICODE);
         $json_data = $this->curlPostHttps($url, $arr_json);
-        if (empty($json_data)) {
-            return WechatErrorCode::$getAssignVersionError;
-        }
         $json_arr = json_decode($json_data, true);
         if (!isset($json_arr['errcode'])) {
             return WechatErrorCode::$getAssignVersionError;
@@ -484,9 +448,6 @@ class AppletOpenApi
     {
         $url = 'https://api.weixin.qq.com/wxa/get_latest_auditstatus?access_token=' . $access_token;
         $json_data = $this->curlGetHttps($url);
-        if (empty($json_data)) {
-            return WechatErrorCode::$lastCheckStatusError;
-        }
         $arr = json_decode($json_data, true);
         if (!isset($arr['errcode'])) {
             return WechatErrorCode::$lastCheckStatusError;
@@ -513,9 +474,6 @@ class AppletOpenApi
         $url = 'https://api.weixin.qq.com/wxa/release?access_token=' . $access_token;
         $data = '{}';
         $json_data = $this->curlPostHttps($url, $data);
-        if (empty($json_data)) {
-            return WechatErrorCode::$issueError;
-        }
         $arr = json_decode($json_data, true);
         if (!isset($arr['errcode'])) {
             return WechatErrorCode::$issueError;
@@ -542,9 +500,6 @@ class AppletOpenApi
     {
         $url = 'https://api.weixin.qq.com/wxa/undocodeaudit?access_token=' . $access_token;
         $json_data = $this->curlGetHttps($url);
-        if (empty($json_data)) {
-            return WechatErrorCode::$checkRecallError;
-        }
         $arr = json_decode($json_data, true);
         if (!isset($arr['errcode'])) {
             return WechatErrorCode::$checkRecallError;
@@ -570,9 +525,6 @@ class AppletOpenApi
      {
         $url = 'https://api.weixin.qq.com/wxa/gettemplatelist?access_token=' . $access_token;
         $json_data = $this->curlGetHttps($url);
-        if (empty($json_data)) {
-            return WechatErrorCode::$getTemplateError;
-        }
         $arr = json_decode($json_data, true);
         if (!isset($arr['errcode'])) {
             return WechatErrorCode::$getTemplateError;

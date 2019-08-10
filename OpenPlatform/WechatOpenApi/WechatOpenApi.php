@@ -79,10 +79,10 @@ class WechatOpenApi
         );
         $json_arr = json_encode($data,JSON_UNESCAPED_UNICODE);
         $json_data = $this->curlPostHttps($url, $json_arr);
-        if (empty($json_data)) {
+        $arr = json_decode($json_data, true);
+        if (!isset($arr['component_access_token'])) {
             return WechatErrorCode::$component_access_token;
         }
-        $arr = json_decode($json_data, true);
         if (empty($arr['component_access_token'])) {
             return WechatErrorCode::$component_access_token;
         }
@@ -107,10 +107,10 @@ class WechatOpenApi
         );
         $json_arr = json_encode($arr,JSON_UNESCAPED_UNICODE);
         $json_data = $this->curlPostHttps($url, $json_arr);
-        if (empty($json_data)) {
+        $data = json_decode($json_data, true);
+        if (!isset($data['pre_auth_code'])) {
             return WechatErrorCode::$getPreAuthCode;
         }
-        $data = json_decode($json_data, true);
         if (empty($data['pre_auth_code'])) {
             return WechatErrorCode::$getPreAuthCode;
         }
@@ -179,10 +179,10 @@ class WechatOpenApi
         );
         $json_arr = json_encode($arr,JSON_UNESCAPED_UNICODE);
         $json_data = $this->curlPostHttps($url, $json_arr);
-        if (empty($json_data)) {
+        $data = json_decode($json_data, true);
+        if (!isset($data['authorization_info'])) {
             return WechatErrorCode::$getAppletAccessToken;
         }
-        $data = json_decode($json_data, true);
         if (empty($data['authorization_info'])) {
             return WechatErrorCode::$getAppletAccessToken;
         }
@@ -211,10 +211,10 @@ class WechatOpenApi
         );
         $json_arr = json_encode($arr,JSON_UNESCAPED_UNICODE);
         $json_data = $this->curlPostHttps($url, $json_arr);
-        if (empty($json_data)) {
+        $data = json_decode($json_data, true);
+        if (!isset($data['authorizer_access_token'])) {
             return WechatErrorCode::$flushAccessToken;
         }
-        $data = json_decode($json_data, true);
         if (empty($data['authorizer_access_token'])) {
             return WechatErrorCode::$flushAccessToken;
         }
@@ -242,10 +242,10 @@ class WechatOpenApi
         );
         $json_arr = json_encode($arr,JSON_UNESCAPED_UNICODE);
         $json_data = $this->curlPostHttps($url, $json_arr);
-        if (empty($json_data)) {
+        $data = json_decode($json_data, true);
+        if (!isset($data['authorizer_info'])) {
             return WechatErrorCode::$getAppletInfoError;
         }
-        $data = json_decode($json_data, true);
         if (empty($data['authorizer_info'])) {
             return WechatErrorCode::$getAppletInfoError;
         }
@@ -275,9 +275,6 @@ class WechatOpenApi
         );
         $json_arr = json_encode($arr,JSON_UNESCAPED_UNICODE);
         $json_data = $this->curlPostHttps($url, $json_arr);
-        if (empty($json_data)) {
-            return WechatErrorCode::$getAppletOptionError;
-        }
         $data = json_decode($json_data, true);
         if (empty($data)) {
             return WechatErrorCode::$getAppletOptionError;
@@ -311,9 +308,6 @@ class WechatOpenApi
         );
         $json_arr = json_encode($arr,JSON_UNESCAPED_UNICODE);
         $json_data = $this->curlPostHttps($url, $json_arr);
-        if (empty($json_data)) {
-            return WechatErrorCode::$setAppletOptionError;
-        }
         $data = json_decode($json_data, true);
         if (!isset($data['errcode'])) {
             return WechatErrorCode::$setAppletOptionError;
